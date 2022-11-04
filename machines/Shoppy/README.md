@@ -32,6 +32,7 @@ write any name in the input field and then click on download exports
 ![Ping](images/img(7).png?raw=true "hosts")
 
 ![Ping](images/img(8).png?raw=true "hosts")
+
 The hash can be cracked using hashcat
 
 ```
@@ -42,7 +43,9 @@ hashcat -m 0 hash.txt rockyou.txt
 
 Now that we have the password, 
 ### ->FOOTHOLD
+
 we need to do subdomain enumeration.
+
 ```
 gobuster vhost --url http://shoppy.htb -w /usr/share/wordlists/amass/bitquark_subdomains_top100K.txt
 ```
@@ -56,9 +59,11 @@ then browse the link and log in using the credentials we found
 
 
 ![Ping](images/img(12).png?raw=true "hosts")
+
 after logging in we see different rooms on the left hand side we go to deploy machine section and see that we have the credentials for deploying the machine.
 
 ![Ping](images/img(13).png?raw=true "hosts")
+
 Login via ssh as jaeger to fetch the user flag
 
 ![Ping](images/img(14).png?raw=true "hosts")
