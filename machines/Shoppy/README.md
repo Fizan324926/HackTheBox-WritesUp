@@ -1,5 +1,5 @@
 # HackTheBox Shoppy WriteUp
-machine IP: 10.10.11.180
+Machine IP: 10.10.11.180
 
 ![Ping](images/img(1).png?raw=true "Ping")
 
@@ -17,7 +17,7 @@ Discovered shoppy.htb by browsing, add to /etc/hosts
 
 ### -> WEB ENUM
 
-go to the browser and have a look at the website’s code and in general, the website look. 
+Go to the browser and have a look at the website’s code and in general, the website look. 
 
 ![Ping](images/img(3).png?raw=true "hosts")
 
@@ -25,15 +25,15 @@ We don’t find anything interesting here so we run gobuster.
 
 ![Ping](images/img(4).png?raw=true "hosts")
 
-looks like we have a login page here to take advantage of this
+Looks like we have a login page here to take advantage of this
 
 ![Ping](images/img(5).png?raw=true "hosts")
 
-figured out it’s using nosql and made it to the admin page using this injection, go to search for users and type in that query again
+Figured out it’s using nosql and made it to the admin page using this injection, go to search for users and type in that query again
 
 ![Ping](images/img(6).png?raw=true "hosts")
 
-write any name in the input field and then click on download exports
+Write any name in the input field and then click on download exports
 
 ![Ping](images/img(7).png?raw=true "hosts")
 
@@ -51,7 +51,7 @@ Now that we have the password,
 
 ### -> FOOTHOLD
 
-we need to do subdomain enumeration.
+We need to do subdomain enumeration.
 
 ```
 gobuster vhost --url http://shoppy.htb -w /usr/share/wordlists/amass/bitquark_subdomains_top100K.txt
@@ -59,15 +59,15 @@ gobuster vhost --url http://shoppy.htb -w /usr/share/wordlists/amass/bitquark_su
 
 ![Ping](images/img(11).png?raw=true "hosts")
 
-here we have mattermost.shoppy.htb, add it to /etc/hosts
+Were we have mattermost.shoppy.htb, add it to /etc/hosts
 
 ![Ping](images/img(10).png?raw=true "hosts")
 
-then browse the link and log in using the credentials we found
+Then browse the link and log in using the credentials we found
 
 ![Ping](images/img(12).png?raw=true "hosts")
 
-after logging in we see different rooms on the left hand side we go to deploy machine section and see that we have the credentials for deploying the machine.
+After logging in we see different rooms on the left hand side we go to deploy machine section and see that we have the credentials for deploying the machine.
 
 ![Ping](images/img(13).png?raw=true "hosts")
 
@@ -95,7 +95,7 @@ sudo -u deploy /home/deploy/password-manager
 
 ![Ping](images/img(17).png?raw=true "hosts")
 
-move to deploy user using these credentials 
+Move to deploy user using these credentials 
 
 ```
 su deploy
@@ -107,7 +107,7 @@ If you went to the mattermost subdomain there’s a hint there:
 
 ![Ping](images/img(19).png?raw=true "hosts")
 
-he’s using docker for deployment, we might find exploits going to [Check Here](https://gtfobins.github.io/#docker)
+He’s using docker for deployment, we might find exploits going to [Check Here](https://gtfobins.github.io/#docker)
 
 ```
 docker run -v /:/mnt --rm -it alpine chroot /mnt sh
