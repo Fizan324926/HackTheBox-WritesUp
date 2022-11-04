@@ -1,16 +1,21 @@
 # HackTheBox Shoppy WriteUp
 machine IP: 10.10.11.180
-## **Scanning**
+
+![Ping](images/img(1).png?raw=true "Ping")
 
 <br/>
 
-### -> nmap scan
+### -> NMAP SCAN
 
-![Ping](images/img(1).png?raw=true "Ping")
+```
+sudo nmap -vvv -cSV -p0-65535 --reason -T4 10.10.11.184 -oN shoppy.nmap
+```
 
 Discovered shoppy.htb by browsing, add to /etc/hosts
 
 ![Ping](images/img(2).png?raw=true "hosts")
+
+### -> WEB ENUM
 
 go to the browser and have a look at the website’s code and in general, the website look. 
 
@@ -43,7 +48,8 @@ hashcat -m 0 hash.txt rockyou.txt
 ![Ping](images/img(9).png?raw=true "hosts")
 
 Now that we have the password, 
-### ->FOOTHOLD
+
+### -> FOOTHOLD
 
 we need to do subdomain enumeration.
 
