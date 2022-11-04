@@ -1,4 +1,4 @@
 # HackTheBox Shoppy WriteUp
-`### **Enum**`
+### **Enum**
 <br/>
 ![Ping](images/img(1).png?raw=true "Ping")
