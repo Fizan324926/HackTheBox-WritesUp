@@ -19,7 +19,7 @@ Discovered shoppy.htb by browsing, add to /etc/hosts
 
 Go to the browser and have a look at the website’s code and in general, the website look. 
 
-![Ping](images/img(3).png?raw=true "hosts" | height=500)
+![Ping](images/img(3).png?raw=true "hosts" height="500")
 
 We don’t find anything interesting here so we run gobuster.
 
